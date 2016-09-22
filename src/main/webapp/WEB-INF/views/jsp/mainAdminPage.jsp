@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>GRAPES</title>
+    <title>ADMIN</title>
 
     <spring:url value="/resources/bootstrap/css/bootstrap.min.css"
                 var="bootstrapCss"/>
@@ -21,37 +21,21 @@
 
     </div>
 
-    <%--<nav class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">GRAPES</a>
-            </div>
+    <jsp:include page="adminHeader.jsp"/>
+
+    <div class="jumbotron container row">
+        <div id="dishInfo" class=" text-left col-md-6">
+
         </div>
-    </nav>
-    <ul class="nav nav-pills">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="/tables">Tables schema</a></li>
-        <li><a href="/waiter">Waiters</a></li>
-        <li><a href="/contacts">Contacts</a></li>
-    </ul>--%>
 
-    <jsp:include page="header.jsp"/>
-
-    <div class="container">
-        <div class="jumbotron row">
-            <div id="dishInfo" class=" text-left col-md-6">
-
-            </div>
-
-            <div class=" text-right col-md-6">
-                <%--<form action="/dish" method="post">--%>
-                Search dish: <input id="dishName" type="text" name="dishName"/>
-                <button id="btnSearch" type="submit" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
-                </button>
-                <%--<input type="submit" value="Search">--%>
-                <%--</form>--%>
-            </div>
+        <div class=" text-right col-md-6">
+            <%--<form action="/dish" method="post">--%>
+            Search dish: <input id="dishName" type="text" name="dishName"/>
+            <button id="btnSearch" type="submit" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+            </button>
+            <%--<input type="submit" value="Search">--%>
+            <%--</form>--%>
         </div>
     </div>
 
@@ -69,7 +53,7 @@
                     <c:forEach items="${menu.dishes}" var="dish">
                         <tr>
                                 <%--<td><a href="/dish/${dish.name}" onclick="getDishInfo(event)">${dish.name}</a></td>--%>
-                            <td><a class="dishLink" href="#">${dish.name}</a></td>
+                            <td><a class="dishLink" href="#" >${dish.name}</a></td>
                             <td>${dish.weight}</td>
                             <td>${dish.price}</td>
                         </tr>
@@ -78,6 +62,20 @@
             </li>
         </c:forEach>
     </ul>
+    <table id="emplyeeTable" style="align-items: center">
+        <tr>
+            <th>Employee Name</th>
+            <th>Position</th>
+        </tr>
+        <%--<c:forEach items="${menu.dishes}" var="dish">
+            <tr>
+                <td><a href="/dish/${dish.name}">${dish.name}</a></td>
+                <td><a onclick="getDishInfo(event)">${dish.name}</a></td>
+                <td>${dish.weight}</td>
+                <td>${dish.price}</td>
+            </tr>
+        </c:forEach>--%>
+    </table>
 
     <script>
         jQuery(document).ready(function ($) {
@@ -141,7 +139,7 @@
                 }
             };
 
-            $(".dishLink").on("click", function (e) {
+            $(".dishLink").on("click", function(e){
                 var dishName = $(this).text();
                 getDishInfo(dishName);
             });
@@ -151,7 +149,7 @@
                 getDishInfo(dishName);
             });
 
-            function getDishInfo(dishName) {
+            function getDishInfo(dishName){
 
                 $.ajax({
                     type: "GET",
@@ -177,15 +175,15 @@
 
             buidDishInfo = function (dish) {
                 var dishInfo = $("#dishInfo");
-                if (dishInfo != null && dishInfo != undefined) {
+                if(dishInfo != null && dishInfo != undefined) {
                     dishInfo.empty();
-                    var dishInfoHtml = '<h1>' + dish.name + '</h1>';
-                    dishInfoHtml += '<h2> Weight: ' + dish.weight + '</h2>';
-                    dishInfoHtml += '<h2> Price: ' + dish.price + '</h2> <ul>';
+                    var dishInfoHtml = '<h1>'+ dish.name +'</h1>';
+                    dishInfoHtml += '<h2> Weight: '+dish.weight+'</h2>';
+                    dishInfoHtml += '<h2> Price: '+dish.price+'</h2> <ul>';
                     for (var i = 0; i < dish.ingredients.length; i++) {
-                        dishInfoHtml += '<li>' + dish.ingredients[i].ingredient.title + '</li>';
+                        dishInfoHtml += '<li>'+dish.ingredients[i].ingredient.title+'</li>';
                     }
-                    dishInfoHtml += '</ul>';
+                    dishInfoHtml +='</ul>';
 
                     dishInfo.append(dishInfoHtml);
 

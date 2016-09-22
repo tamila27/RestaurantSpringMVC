@@ -6,24 +6,27 @@
     <title>Employees</title>
 </head>
 <body>
-<table style="align-items: center">
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Position</th>
-        <th>Phone Number</th>
-        <th>Salary</th>
+<jsp:include page="header.jsp"/>
+<div class="container">
+    <table style="align-items: center">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Position</th>
+            <th>Phone Number</th>
+            <th>Salary</th>
 
-    </tr>
+        </tr>
 
-    <tr>
-        <td>${employee.name}</td>
-        <td>${employee.lastName}</td>
-        <td>${employee.position}</td>
-        <td>${employee.salary}</td>
-        <td>${employee.phone}</td>
-    </tr>
+        <tr>
+            <td>${employee.name}</td>
+            <td>${employee.lastName}</td>
+            <td>${employee.position}</td>
+            <td>${employee.salary}</td>
+            <td>${employee.phone}</td>
+        </tr>
 
-</table>
+    </table>
+</div>
 </body>
 </html>

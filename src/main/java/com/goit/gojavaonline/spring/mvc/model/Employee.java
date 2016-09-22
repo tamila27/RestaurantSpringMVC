@@ -3,6 +3,7 @@ package com.goit.gojavaonline.spring.mvc.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "EMPLOYEE")
@@ -22,7 +23,7 @@ public class Employee {
     private String name;
 
     @Column(name = "BIRTH_DATE")
-    private String birthDate;
+    private Date birthDate;
 
     @Column(name = "PHONE")
     private String phone;
@@ -58,11 +59,11 @@ public class Employee {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 

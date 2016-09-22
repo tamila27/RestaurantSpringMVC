@@ -5,6 +5,9 @@
     <title>Tables schema</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
+<div class="container">
     <img src="<c:url value="/images/tabels.jpg" />"/>
+</div>
 </body>
 </html>

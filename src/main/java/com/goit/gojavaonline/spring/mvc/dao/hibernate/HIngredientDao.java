@@ -36,7 +36,7 @@ public class HIngredientDao implements IngredientDao {
     public Ingredient load(int id) {
         Ingredient result = sessionFactory.getCurrentSession().load(Ingredient.class, id);
         if(result == null) {
-            throw new RuntimeException("Cannot find Ingredient by id: "+ id);
+            throw new RuntimeException("Cannot find IngredientDto by id: "+ id);
         }
         return result;
     }

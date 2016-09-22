@@ -8,9 +8,7 @@ import java.util.List;
 
 @Entity
 public class Waiter extends Employee {
-    /*@OneToMany(*//*fetch = FetchType.LAZY*//*)
-    @JoinColumn(name = "ID")
-    @Fetch(FetchMode.JOIN)*/
+
     @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "ORDERS",

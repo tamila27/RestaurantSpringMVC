@@ -16,6 +16,7 @@ public class MainController {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("menuList", menuService.getAllMenus());
+        modelAndView.addObject("active", "home");
         modelAndView.setViewName("mainPage");
         return modelAndView;
     }
@@ -23,6 +24,7 @@ public class MainController {
     @RequestMapping(value = "/tables", method = RequestMethod.GET)
     public ModelAndView tables() {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("active", "tables");
         modelAndView.setViewName("tables");
         return modelAndView;
     }
@@ -30,6 +32,7 @@ public class MainController {
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public ModelAndView contacts() {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("active", "contacts");
         modelAndView.setViewName("contacts");
         return modelAndView;
     }

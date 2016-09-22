@@ -5,17 +5,21 @@
     <title>Waiters</title>
 </head>
 <body>
-<table style="align-items: center">
-    <tr>
-        <th>Photo</th>
-        <th>First Name</th>
-    </tr>
-    <c:forEach items="${waiters}" var="waiter">
+<jsp:include page="header.jsp"/>
+<div class="container">
+
+    <table class="table">
         <tr>
-            <td><img width="100" height="100" src="<c:url value="/images/smile.jpg" />"/></td>
-            <td>${waiter.name} </td>
+            <th>Photo</th>
+            <th>First Name</th>
         </tr>
-    </c:forEach>
-</table>
+        <c:forEach items="${waiters}" var="waiter">
+            <tr>
+                <td><img width="100" height="100" src="<c:url value="/images/smile.jpg" />"/></td>
+                <td>${waiter.name} </td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
 </body>
 </html>

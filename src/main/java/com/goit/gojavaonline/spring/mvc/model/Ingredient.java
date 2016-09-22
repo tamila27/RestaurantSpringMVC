@@ -34,7 +34,7 @@ public class Ingredient {
 
     @Override
     public String toString() {
-        return "Ingredient{" +
+        return "IngredientDto{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 '}';

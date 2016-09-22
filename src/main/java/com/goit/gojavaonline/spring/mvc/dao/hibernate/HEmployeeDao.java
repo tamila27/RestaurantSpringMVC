@@ -26,7 +26,8 @@ public class HEmployeeDao implements EmployeeDao {
     @Override
     @Transactional
     public Employee load(Long id) {
-        Employee result = sessionFactory.getCurrentSession().load(Employee.class, id);
+        //Employee result = sessionFactory.getCurrentSession().load(Employee.class, id)
+        Employee result = getCurrentSession().get( Employee.class, id );
         if(result == null) {
             throw new RuntimeException("Cannot find Employee by id: "+ id);
         }
@@ -70,6 +71,10 @@ public class HEmployeeDao implements EmployeeDao {
         query.setParameter("position", Position.WAITER);
 
         return query.list();
+    }
+
+    protected Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {
