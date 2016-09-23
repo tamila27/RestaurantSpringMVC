@@ -3,13 +3,13 @@ package com.goit.gojavaonline.spring.mvc.web;
 import com.goit.gojavaonline.spring.mvc.dto.DishDto;
 import com.goit.gojavaonline.spring.mvc.service.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
-//@Controller
-@RestController
+@Controller
 public class DishController {
 
     private DishService dishService;
@@ -23,10 +23,7 @@ public class DishController {
     public ModelAndView dish(@PathVariable String dishName) {
         return getDishModelAndView(dishName);
     }*/
-    @RequestMapping(value = "/dish/{dishName}", method = RequestMethod.GET)
-    public DishDto dish(@PathVariable("dishName") String dishName) {
-        return dishService.getDishByName(dishName);
-    }
+
 
     /*@RequestMapping(value = "/dish", method = RequestMethod.POST)
     public ModelAndView dishByName(@ModelAttribute("dishName") String dishName) {
@@ -40,9 +37,13 @@ public class DishController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/dish", method = RequestMethod.GET)
-    public List<DishDto> getAllDishes() {
-        return dishService.getAllDishes();
+    @RequestMapping( value = "/admindish", method = RequestMethod.GET)
+    public ModelAndView adminDish() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("dishes", dishService.getAllDishes());
+        modelAndView.addObject("active", "dish");
+        modelAndView.setViewName("adminDish");
+        return modelAndView;
     }
 
     @Autowired

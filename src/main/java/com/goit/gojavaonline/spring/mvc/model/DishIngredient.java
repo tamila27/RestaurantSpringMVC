@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Table(name = "DISHES_INGREDIENTS")
 public class DishIngredient implements Serializable{
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "DISH_ID")
     private Dish dish;
 

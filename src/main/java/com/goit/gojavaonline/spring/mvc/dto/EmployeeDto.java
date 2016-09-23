@@ -4,22 +4,13 @@ import com.goit.gojavaonline.spring.mvc.model.Employee;
 import com.goit.gojavaonline.spring.mvc.model.Position;
 import com.goit.gojavaonline.spring.mvc.utils.DateFormatUtils;
 
-/**
- * Created by tamila on 9/20/16.
- */
 public class EmployeeDto {
     private Long id;
-
     private String lastName;
-
     private String name;
-
     private String birthDate;
-
     private String phone;
-
     private Position position;
-
     private float salary;
 
     public static EmployeeDto convert(Employee employee) {

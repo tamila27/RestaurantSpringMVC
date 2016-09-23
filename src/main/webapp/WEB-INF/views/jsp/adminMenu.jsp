@@ -18,13 +18,8 @@
 
     <div class="row">
         <div id="dishInfo" class=" text-right  col-md-6">
-            <%--<div class="container text-right">--%>
-            <%--<button type="button" class="btn btn-primary"
-                    onclick="onAddMenuBtnClick()">Add Menu</button>
-            <br/><br/>--%>
             <div class="row container text-right">
                 <div class="row col-md-5">
-                    <%--<label class="control-label">Menu name:</label>--%>
                     <input id="newMenuName" class="form-control"
                            type="text"/>
 
@@ -34,7 +29,6 @@
                 </div>
                 <br/> <br/><br/>
             </div>
-            <%--</div>--%>
 
             <table class="table table-bordered" id="menuTable">
                 <c:forEach items="${menus}" var="menu">

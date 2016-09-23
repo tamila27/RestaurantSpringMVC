@@ -57,6 +57,15 @@ public class HDishDao implements DishDao {
         return (Dish) query.uniqueResult();
     }
 
+    @Override
+    @Transactional
+    public void updateDish(int dishId, float weight, float price) {
+        Dish dish = findById(dishId);
+        dish.setWeight(weight);
+        dish.setPrice(price);
+        sessionFactory.getCurrentSession().update(dish);
+    }
+
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

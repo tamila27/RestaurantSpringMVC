@@ -1,4 +1,4 @@
-package com.goit.gojavaonline.spring.mvc.web.endPoint;
+package com.goit.gojavaonline.spring.mvc.web.endpoint;
 
 import com.goit.gojavaonline.spring.mvc.dto.DishDto;
 import com.goit.gojavaonline.spring.mvc.dto.MenuDto;
@@ -13,7 +13,7 @@ import java.util.List;
  * Created by tamila on 9/22/16.
  */
 @RestController
-public class MenuRestController extends SecureController {
+public class MenuRestEndPoint extends SecureController {
     private MenuService menuService;
 
     @RequestMapping(value = "/menu/{menuId}", method = RequestMethod.GET)

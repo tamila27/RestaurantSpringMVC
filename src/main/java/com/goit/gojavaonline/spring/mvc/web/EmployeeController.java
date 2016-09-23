@@ -1,16 +1,14 @@
 package com.goit.gojavaonline.spring.mvc.web;
 
-import com.goit.gojavaonline.spring.mvc.dto.EmployeeDto;
+import com.goit.gojavaonline.spring.mvc.model.Position;
 import com.goit.gojavaonline.spring.mvc.service.EmployeeService;
-import com.goit.gojavaonline.spring.mvc.utils.UserIsNotAuthenticatedException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
-@RestController
+@Controller
 public class EmployeeController extends SecureController {
 
     private EmployeeService employeeService;
@@ -45,20 +43,16 @@ public class EmployeeController extends SecureController {
         return employeeService.save(employee);
     }*/
 
-    @RequestMapping(value = "/employee", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    @ResponseBody
-    public EmployeeDto createEmployee( @RequestBody EmployeeDto employee) throws UserIsNotAuthenticatedException {
-        return employeeService.create(employee);
-    }
 
-    @RequestMapping( value = "/employee", method = RequestMethod.GET)
-    public List<EmployeeDto> employees() {
-        return employeeService.getEmployees();
-    }
 
-    @RequestMapping(value = "/employee/{employeeName}", method = RequestMethod.GET)
-    public EmployeeDto employee(@RequestBody EmployeeDto employee) {
-        return employeeService.getEmployeeName(employee.getName());
+    @RequestMapping( value = "/adminemployee", method = RequestMethod.GET)
+    public ModelAndView adminDish() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("employees", employeeService.getAllEmployee());
+        modelAndView.addObject("positions", Position.values());
+        modelAndView.addObject("active", "employee");
+        modelAndView.setViewName("adminEmployee");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/waiters", method = RequestMethod.GET)

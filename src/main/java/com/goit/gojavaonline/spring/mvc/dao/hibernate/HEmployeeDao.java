@@ -73,6 +73,12 @@ public class HEmployeeDao implements EmployeeDao {
         return query.list();
     }
 
+    @Override
+    @Transactional
+    public void update(Employee employee) {
+        sessionFactory.getCurrentSession().update(employee);
+    }
+
     protected Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }

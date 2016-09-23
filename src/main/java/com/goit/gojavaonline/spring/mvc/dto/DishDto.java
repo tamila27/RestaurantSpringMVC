@@ -7,9 +7,7 @@ import com.goit.gojavaonline.spring.mvc.model.DishIngredient;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by tamila on 9/21/16.
- */
+
 public class DishDto {
     private int id;
     private String name;
@@ -79,8 +77,10 @@ public class DishDto {
 
     public void convertIngredients(List<DishIngredient> ingredients) {
         this.ingredients = new ArrayList<>();
-        for (int i = 0; i < ingredients.size(); i++) {
-            this.ingredients.add(DishIngredientDto.convert(ingredients.get(i)));
+        if(ingredients != null) {
+            for (int i = 0; i < ingredients.size(); i++) {
+                this.ingredients.add(DishIngredientDto.convert(ingredients.get(i)));
+            }
         }
     }
 }

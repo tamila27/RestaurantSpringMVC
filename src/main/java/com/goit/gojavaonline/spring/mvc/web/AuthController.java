@@ -1,8 +1,10 @@
 package com.goit.gojavaonline.spring.mvc.web;
 
+import com.goit.gojavaonline.spring.mvc.service.MenuService;
 import com.goit.gojavaonline.spring.mvc.utils.AuthTokenRepository;
 import com.goit.gojavaonline.spring.mvc.utils.PasswordHash;
 import com.goit.gojavaonline.spring.mvc.utils.PasswordLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,8 @@ import java.util.Objects;
 
 @Controller
 public class AuthController {
+
+    private MenuService menuService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login() {
@@ -54,9 +58,16 @@ public class AuthController {
     private ModelAndView authSucceed(HttpServletResponse response) {
         AuthTokenRepository.signResponse(response);
 
-        ModelAndView modelAndView = new ModelAndView("adminMainPage");
+        ModelAndView modelAndView = new ModelAndView("adminMenu");
         modelAndView.addObject( "message", "Welcome to the Administration Page." );
+        modelAndView.addObject("menus", menuService.getAllMenus());
+        modelAndView.addObject("active", "menu");
+        modelAndView.setViewName("adminMenu");
         return modelAndView;
     }
 
+    @Autowired
+    public void setMenuService(MenuService menuService) {
+        this.menuService = menuService;
+    }
 }

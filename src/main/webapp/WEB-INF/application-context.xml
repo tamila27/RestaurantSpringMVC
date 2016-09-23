@@ -13,6 +13,12 @@
 
     <bean id="dishService" class="com.goit.gojavaonline.spring.mvc.service.DishService"/>
     <bean id="dishDao" class="com.goit.gojavaonline.spring.mvc.dao.hibernate.HDishDao"/>
+
+    <bean id="ingredientService" class="com.goit.gojavaonline.spring.mvc.service.IngredientService"/>
+    <bean id="ingredientDao" class="com.goit.gojavaonline.spring.mvc.dao.hibernate.HIngredientDao"/>
+
+    <!--<bean id="dishIngredientService" class="com.goit.gojavaonline.spring.mvc.service.DishIngredientService"/>-->
+    <bean id="dishIngredientDao" class="com.goit.gojavaonline.spring.mvc.dao.hibernate.HDishIngredientsDao"/>
     <!-- Aspect Methods -->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:component-scan base-package="com.goit.gojavaonline.spring.mvc.web"/>

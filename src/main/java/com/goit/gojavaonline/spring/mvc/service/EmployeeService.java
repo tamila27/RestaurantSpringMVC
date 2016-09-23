@@ -41,6 +41,20 @@ public class EmployeeService {
         return convert(employeeDao.getAllWaiters());
     }
 
+    @Transactional
+    public List<EmployeeDto> getAllEmployee() {
+        return convert(employeeDao.findAll());
+    }
+
+    @Transactional
+    public EmployeeDto updateEmployee(Employee employee) {
+
+        employeeDao.update(employee);
+
+        return EmployeeDto.convert(employee);
+
+    }
+
     private List<EmployeeDto> convert(List<Employee> employees) {
         return employees.stream().map(EmployeeDto::convert).collect(Collectors.toList());
     }

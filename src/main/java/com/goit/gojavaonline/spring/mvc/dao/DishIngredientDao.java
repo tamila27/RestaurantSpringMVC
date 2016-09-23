@@ -11,6 +11,7 @@ public interface DishIngredientDao {
     void save(DishIngredient dishIngredient);
     void delete(int ingredientId, int dishId);
     List<DishIngredient> getIngredientsByDishName(String dish);
+    List<DishIngredient> getIngredientsByDishId(int id);
 
     void removeAll();
 }

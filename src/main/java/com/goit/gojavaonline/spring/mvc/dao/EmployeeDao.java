@@ -22,4 +22,6 @@ public interface EmployeeDao {
     void removeAll();
 
     List<Employee> getAllWaiters();
+
+    void update(Employee employee);
 }
