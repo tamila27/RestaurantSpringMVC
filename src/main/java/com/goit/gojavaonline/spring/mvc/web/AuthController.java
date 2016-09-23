@@ -54,7 +54,7 @@ public class AuthController {
     private ModelAndView authSucceed(HttpServletResponse response) {
         AuthTokenRepository.signResponse(response);
 
-        ModelAndView modelAndView = new ModelAndView("mainAdminPage");
+        ModelAndView modelAndView = new ModelAndView("adminMainPage");
         modelAndView.addObject( "message", "Welcome to the Administration Page." );
         return modelAndView;
     }

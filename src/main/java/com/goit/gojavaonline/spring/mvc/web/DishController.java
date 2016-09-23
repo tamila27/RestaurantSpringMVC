@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 //@Controller
 @RestController
 public class DishController {
@@ -26,16 +28,21 @@ public class DishController {
         return dishService.getDishByName(dishName);
     }
 
-    @RequestMapping(value = "/dish", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/dish", method = RequestMethod.POST)
     public ModelAndView dishByName(@ModelAttribute("dishName") String dishName) {
         return getDishModelAndView(dishName);
-    }
+    }*/
 
     private ModelAndView getDishModelAndView(String dishName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("dish", dishService.getDishByName(dishName));
         modelAndView.setViewName("dish");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/dish", method = RequestMethod.GET)
+    public List<DishDto> getAllDishes() {
+        return dishService.getAllDishes();
     }
 
     @Autowired

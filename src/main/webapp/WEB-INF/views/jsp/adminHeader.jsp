@@ -24,7 +24,7 @@
         </div>
     </nav>
     <ul id="btnsList" class="nav nav-pills">
-        <li id="btnMenu" <c:if test="${active == 'menu'}">class="active"</c:if> ><a href="/admin/menu">Menu</a></li>
+        <li id="btnMenu" <c:if test="${active == 'menu'}">class="active"</c:if> ><a href="/adminmenu">Menu</a></li>
         <li id="btnDish" <c:if test="${active == 'dish'}">class="active"</c:if> ><a href="/admin/dish">Dish</a></li>
         <li id="btnEmployee"  <c:if test="${active == 'employee'}">class="active"</c:if>><a href="/admin/employee">Employee</a></li>
         <li id="btnStorage" <c:if test="${active == 'storage'}">class="active"</c:if>><a href="/admin/storage">Storage</a></li>

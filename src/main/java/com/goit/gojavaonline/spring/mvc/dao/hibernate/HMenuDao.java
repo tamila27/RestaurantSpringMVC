@@ -53,6 +53,7 @@ public class HMenuDao implements MenuDao {
         return (Menu) query.uniqueResult();
     }
 
+    @Override
     @Transactional
     public Menu findById(int id) {
         Session session = sessionFactory.getCurrentSession();
@@ -72,6 +73,10 @@ public class HMenuDao implements MenuDao {
     @Transactional
     public List<Dish> getAllMenuDishes(int menuId) {
         return null;
+        /*Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select d from MENU_DISH d where d.menu_id like :menuId");
+        query.setParameter("menuId", menuId);
+        return query.list();*/
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

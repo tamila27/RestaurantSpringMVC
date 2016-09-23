@@ -18,4 +18,6 @@ public interface DishDao {
     Dish findByName(String name);
     void deleteDish(Dish dish);
     void removeAll();
+
+    Dish findById(int dishId);
 }

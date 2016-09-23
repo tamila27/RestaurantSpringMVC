@@ -14,28 +14,8 @@
     <script src="${jqueryJs}"></script>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 <div class="container">
-
-    <div class="container">
-
-
-    </div>
-
-    <%--<nav class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">GRAPES</a>
-            </div>
-        </div>
-    </nav>
-    <ul class="nav nav-pills">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="/tables">Tables schema</a></li>
-        <li><a href="/waiter">Waiters</a></li>
-        <li><a href="/contacts">Contacts</a></li>
-    </ul>--%>
-
-    <jsp:include page="header.jsp"/>
 
     <div class="container">
         <div class="jumbotron row">
@@ -44,13 +24,10 @@
             </div>
 
             <div class=" text-right col-md-6">
-                <%--<form action="/dish" method="post">--%>
                 Search dish: <input id="dishName" type="text" name="dishName"/>
                 <button id="btnSearch" type="submit" class="btn btn-default btn-sm">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
                 </button>
-                <%--<input type="submit" value="Search">--%>
-                <%--</form>--%>
             </div>
         </div>
     </div>
@@ -60,6 +37,7 @@
         <c:forEach items="${menuList}" var="menu">
             <li><h1>${menu.name}</h1>
 
+
                 <table class="table">
                     <tr>
                         <th>Dish Name</th>
@@ -68,7 +46,6 @@
                     </tr>
                     <c:forEach items="${menu.dishes}" var="dish">
                         <tr>
-                                <%--<td><a href="/dish/${dish.name}" onclick="getDishInfo(event)">${dish.name}</a></td>--%>
                             <td><a class="dishLink" href="#">${dish.name}</a></td>
                             <td>${dish.weight}</td>
                             <td>${dish.price}</td>

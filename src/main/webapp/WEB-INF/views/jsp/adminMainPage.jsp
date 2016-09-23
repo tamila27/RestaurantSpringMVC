@@ -160,7 +160,7 @@
                     timeout: 100000,
                     success: function (data) {
                         console.log("SUCCESS: ", data);
-                        buidDishInfo(data);
+                        buildDishInfo(data);
                     },
                     error: function (e) {
                         console.log("ERROR: ", e);
@@ -173,7 +173,7 @@
                 });
             }
 
-            buidDishInfo = function (dish) {
+            buildDishInfo = function (dish) {
                 var dishInfo = $("#dishInfo");
                 if(dishInfo != null && dishInfo != undefined) {
                     dishInfo.empty();

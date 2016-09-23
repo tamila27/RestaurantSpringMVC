@@ -48,6 +48,15 @@ public class HDishDao implements DishDao {
         sessionFactory.getCurrentSession().createQuery("delete from Dish").executeUpdate();
     }
 
+    @Override
+    @Transactional
+    public Dish findById(int dishId) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select d from Dish d where d.id like :id");
+        query.setParameter("id", dishId);
+        return (Dish) query.uniqueResult();
+    }
+
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

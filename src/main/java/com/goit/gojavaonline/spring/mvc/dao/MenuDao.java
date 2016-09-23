@@ -17,4 +17,6 @@ public interface MenuDao {
     Menu findByName(String name);
     List<Menu> getAll();
     List<Dish> getAllMenuDishes(int menuId);
+
+    Menu findById(int id);
 }
