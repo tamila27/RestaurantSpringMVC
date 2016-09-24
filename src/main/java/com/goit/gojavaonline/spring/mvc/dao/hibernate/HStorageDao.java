@@ -6,6 +6,7 @@ import com.goit.gojavaonline.spring.mvc.model.IngredientsStorage;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,16 +17,19 @@ public class HStorageDao implements StorageDao {
     private SessionFactory sessionFactory;
 
     @Override
+    @Transactional
     public void insertIngredientToStorage(IngredientsStorage ingredientsStorage) {
         sessionFactory.getCurrentSession().save(ingredientsStorage);
     }
 
     @Override
+    @Transactional
     public void deleteIngredientFromStorage(int id) {
         sessionFactory.getCurrentSession().delete(getStorageIngredientById(id));
     }
 
     @Override
+    @Transactional
     public void changeIngredientQuantity(int id, float newQuantity) {
         IngredientsStorage ingredientsStorage = getStorageIngredientById(id);
         ingredientsStorage.setQuantity(newQuantity);
@@ -33,6 +37,7 @@ public class HStorageDao implements StorageDao {
     }
 
     @Override
+    @Transactional
     public IngredientsStorage getIngredientFromStorage(String name) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select i from IngredientsStorage i where i.ingredient.title like :title");
@@ -41,12 +46,14 @@ public class HStorageDao implements StorageDao {
     }
 
     @Override
+    @Transactional
     public List<IngredientsStorage> getAll() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select i from IngredientsStorage i").list();
     }
 
     @Override
+    @Transactional
     public Ingredient getIngredientByName(String name) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select i from Ingredient i where i.title like :title");
@@ -55,11 +62,14 @@ public class HStorageDao implements StorageDao {
     }
 
     @Override
+    @Transactional
     public void removeAll() {
         sessionFactory.getCurrentSession().createQuery("delete from IngredientsStorage").executeUpdate();
     }
 
-    private IngredientsStorage getStorageIngredientById(int id) {
+    @Override
+    @Transactional
+    public IngredientsStorage getStorageIngredientById(int id) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select i from IngredientsStorage i where i.id like :id");
         query.setParameter("id", id);

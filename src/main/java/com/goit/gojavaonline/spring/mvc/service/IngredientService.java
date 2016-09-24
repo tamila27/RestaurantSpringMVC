@@ -24,6 +24,11 @@ public class IngredientService {
         return result;
     }
 
+    @Transactional
+    public Ingredient getIngredientByTitle(String ingredientTitle) {
+        return ingredientDao.loadByTitle(ingredientTitle);
+    }
+
     @Autowired
     public void setIngredientDao(IngredientDao ingredientDao) {
         this.ingredientDao = ingredientDao;
