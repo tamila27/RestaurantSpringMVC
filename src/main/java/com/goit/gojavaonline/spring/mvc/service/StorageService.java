@@ -8,9 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by tamila on 9/23/16.
- */
 public class StorageService {
     private StorageDao storageDao;
 

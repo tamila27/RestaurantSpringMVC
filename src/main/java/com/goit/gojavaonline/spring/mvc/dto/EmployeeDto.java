@@ -4,6 +4,9 @@ import com.goit.gojavaonline.spring.mvc.model.Employee;
 import com.goit.gojavaonline.spring.mvc.model.Position;
 import com.goit.gojavaonline.spring.mvc.utils.DateFormatUtils;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class EmployeeDto {
     private Long id;
     private String lastName;
@@ -35,6 +38,10 @@ public class EmployeeDto {
         employee.setPosition(employeeDto.getPosition());
         employee.setSalary(employeeDto.getSalary());
         return employee;
+    }
+
+    public static List<EmployeeDto> convert(List<Employee> employees) {
+        return employees.stream().map(EmployeeDto::convert).collect(Collectors.toList());
     }
 
     public Long getId() {

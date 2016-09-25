@@ -16,4 +16,9 @@ public interface OrderDao {
     List<Order> getOrders(boolean closed);
     Order getOrderById(int id);
     void removeAll();
+    List<Order> getAll();
+    List<Order> getByTable(int tableNum);
+    List<Order> getByWaiter(Long id);
+
+    List<Order> getByDate(String date);
 }

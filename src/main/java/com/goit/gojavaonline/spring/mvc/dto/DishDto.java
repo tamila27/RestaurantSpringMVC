@@ -6,6 +6,7 @@ import com.goit.gojavaonline.spring.mvc.model.DishIngredient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class DishDto {
@@ -25,6 +26,23 @@ public class DishDto {
         dishDto.setCategory(dish.getCategory());
         dishDto.convertIngredients(dish.getIngredients());
         return dishDto;
+    }
+
+    public void setIngredients(List<DishIngredientDto> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void convertIngredients(List<DishIngredient> ingredients) {
+        this.ingredients = new ArrayList<>();
+        if(ingredients != null) {
+            for (int i = 0; i < ingredients.size(); i++) {
+                this.ingredients.add(DishIngredientDto.convert(ingredients.get(i)));
+            }
+        }
+    }
+
+    public static List<DishDto> convert(List<Dish> dishes) {
+        return dishes.stream().map(DishDto::convert).collect(Collectors.toList());
     }
 
     public int getId() {
@@ -69,18 +87,5 @@ public class DishDto {
 
     public List<DishIngredientDto> getIngredients() {
         return ingredients;
-    }
-
-    public void setIngredients(List<DishIngredientDto> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public void convertIngredients(List<DishIngredient> ingredients) {
-        this.ingredients = new ArrayList<>();
-        if(ingredients != null) {
-            for (int i = 0; i < ingredients.size(); i++) {
-                this.ingredients.add(DishIngredientDto.convert(ingredients.get(i)));
-            }
-        }
     }
 }

@@ -7,7 +7,6 @@ import com.goit.gojavaonline.spring.mvc.web.AuthenticationRequired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class EmployeeService {
     private EmployeeDao employeeDao;
@@ -28,7 +27,7 @@ public class EmployeeService {
 
     @Transactional
     public List<EmployeeDto> getEmployees() {
-        return convert(employeeDao.findAll());
+        return EmployeeDto.convert(employeeDao.findAll());
     }
 
     @Transactional
@@ -38,12 +37,12 @@ public class EmployeeService {
 
     @Transactional
     public List<EmployeeDto> getAllWaiters() {
-        return convert(employeeDao.getAllWaiters());
+        return EmployeeDto.convert(employeeDao.getAllWaiters());
     }
 
     @Transactional
     public List<EmployeeDto> getAllEmployee() {
-        return convert(employeeDao.findAll());
+        return EmployeeDto.convert(employeeDao.findAll());
     }
 
     @Transactional
@@ -55,9 +54,6 @@ public class EmployeeService {
 
     }
 
-    private List<EmployeeDto> convert(List<Employee> employees) {
-        return employees.stream().map(EmployeeDto::convert).collect(Collectors.toList());
-    }
 
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
