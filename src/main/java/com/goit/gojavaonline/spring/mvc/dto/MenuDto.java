@@ -6,9 +6,6 @@ import com.goit.gojavaonline.spring.mvc.model.Menu;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by tamila on 9/22/16.
- */
 public class MenuDto {
 
     private int id;
@@ -57,6 +54,7 @@ public class MenuDto {
                 dishDto.setId(d.getId());
                 dishDto.setName(d.getName());
                 dishDto.setPrice(d.getPrice());
+                dishDto.setWeight(d.getWeight());
                 dishDto.convertIngredients(d.getIngredients());
 
                 dishesDtoList.add(dishDto);

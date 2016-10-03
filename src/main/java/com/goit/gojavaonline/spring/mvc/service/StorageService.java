@@ -3,6 +3,7 @@ package com.goit.gojavaonline.spring.mvc.service;
 import com.goit.gojavaonline.spring.mvc.dao.StorageDao;
 import com.goit.gojavaonline.spring.mvc.dto.IngredientsStorageDto;
 import com.goit.gojavaonline.spring.mvc.model.IngredientsStorage;
+import com.goit.gojavaonline.spring.mvc.web.AuthenticationRequired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ public class StorageService {
         return IngredientsStorageDto.convertList(storageDao.getAll());
     }
 
+    @AuthenticationRequired
     @Transactional
     public void changeIngredientQuantity(int storageIngredientId, float quantity) {
         storageDao.changeIngredientQuantity(storageIngredientId, quantity);
@@ -26,11 +28,13 @@ public class StorageService {
         return IngredientsStorageDto.convert(storageDao.getStorageIngredientById(storageIngredientId));
     }
 
+    @AuthenticationRequired
     @Transactional
     public void deleteIngredientFromStorage(int ingredientId) {
         storageDao.deleteIngredientFromStorage(ingredientId);
     }
 
+    @AuthenticationRequired
     @Transactional
     public void insertIngredientToStorage(IngredientsStorage ingredientsStorage) {
         storageDao.insertIngredientToStorage(ingredientsStorage);

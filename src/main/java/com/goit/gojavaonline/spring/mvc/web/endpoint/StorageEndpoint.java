@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by tamila on 9/24/16.
- */
 @RestController
 public class StorageEndpoint extends SecureController {
     private StorageService storageService;

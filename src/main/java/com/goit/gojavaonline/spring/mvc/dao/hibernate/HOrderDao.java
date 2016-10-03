@@ -81,7 +81,7 @@ public class HOrderDao implements OrderDao{
     @Transactional
     public List<Order> getByTable(int tableNum) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Order where o.tableNum = :tableNum");
+        Query query = session.createQuery("from Order where tableNum = :tableNum");
         query.setParameter("tableNum", tableNum);
 
         return query.list();

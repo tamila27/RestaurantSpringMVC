@@ -126,26 +126,20 @@
         });
 
         $('#dishesTable').on('click', ".delete-dish", function (event) {
-            //alert("Delete : " + $(this).data('name'));
             $.ajax({
                 type: "DELETE",
-                //contentType: "application/json",
                 url: "/dish/delete/" + selectedDishId,
-                //data : JSON.stringify(),
                 dataType: 'json',
                 timeout: 100000,
                 success: function (data) {
                     console.log("SUCCESS: ", data);
                     location.reload();
-                    //getMenuDishes(selectedMenuId);
                 },
                 error: function (e) {
                     console.log("ERROR: ", e);
-                    //display(e);
                 },
                 done: function (e) {
                     console.log("DONE");
-                    //enableSearchButton(true);
                 }
             });
         });
@@ -155,9 +149,7 @@
 
         $.ajax({
             type: "GET",
-            //contentType: "application/json",
             url: "/ingredients",
-            //data : JSON.stringify(),
             dataType: 'json',
             timeout: 100000,
             success: function (data) {
@@ -166,11 +158,9 @@
             },
             error: function (e) {
                 console.log("ERROR: ", e);
-                //display(e);
             },
             done: function (e) {
                 console.log("DONE");
-                //enableSearchButton(true);
             }
         });
     }
@@ -179,9 +169,7 @@
 
         $.ajax({
             type: "GET",
-            //contentType: "application/json",
             url: "/dish/ingredients/" + dishId,
-            //data : JSON.stringify(),
             dataType: 'json',
             timeout: 100000,
             success: function (data) {
@@ -190,11 +178,9 @@
             },
             error: function (e) {
                 console.log("ERROR: ", e);
-                //display(e);
             },
             done: function (e) {
                 console.log("DONE");
-                //enableSearchButton(true);
             }
         });
     }
@@ -203,9 +189,7 @@
 
         $.ajax({
             type: "PUT",
-            //contentType: "application/json",
             url: "/dish/edit/" + dishId + "/" + ingredientId + "/" + quantity,
-            //data : JSON.stringify(),
             dataType: 'json',
             timeout: 100000,
             success: function (data) {
@@ -214,11 +198,9 @@
             },
             error: function (e) {
                 console.log("ERROR: ", e);
-                //display(e);
             },
             done: function (e) {
                 console.log("DONE");
-                //enableSearchButton(true);
             }
         });
     }
@@ -227,9 +209,7 @@
 
         $.ajax({
             type: "DELETE",
-            //contentType: "application/json",
             url: "/dish/ingredient/delete/" + dishId + "/" + ingredientId,
-            //data : JSON.stringify(),
             dataType: 'json',
             timeout: 100000,
             success: function (data) {
@@ -238,11 +218,9 @@
             },
             error: function (e) {
                 console.log("ERROR: ", e);
-                //display(e);
             },
             done: function (e) {
                 console.log("DONE");
-                //enableSearchButton(true);
             }
         });
     }
@@ -251,26 +229,20 @@
         var dishName = $('#newDishName')[0].value;
         var dishWeight = $('#dishWeight')[0].value;
         var dishPrice = $('#dishPrice')[0].value;
-        //alert(menuName);
         $.ajax({
             type: "PUT",
-            //contentType: "application/json",
             url: "/dish/add/" + dishName+"/"+dishWeight+"/"+dishPrice,
-            //data : JSON.stringify(),
             dataType: 'json',
             timeout: 100000,
             success: function (data) {
                 console.log("SUCCESS: ", data);
                 location.reload();
-                //getMenuDishes(data.id);
             },
             error: function (e) {
                 console.log("ERROR: ", e);
-                //display(e);
             },
             done: function (e) {
                 console.log("DONE");
-                //enableSearchButton(true);
             }
         });
     }
@@ -348,27 +320,21 @@
         var dishId = selectedDishId;
         var dishWeight = $('#dishWeight')[0].value;
         var dishPrice = $('#dishPrice')[0].value;
-        //alert(menuName);
         $.ajax({
             type: "PUT",
-            //contentType: "application/json",
             url: "/dish/update/" + dishId+"/"+dishWeight+"/"+dishPrice,
-            //data : JSON.stringify(),
             dataType: 'json',
             timeout: 100000,
             success: function (data) {
                 console.log("SUCCESS: ", data);
-                //location.reload();
-                //getMenuDishes(data.id);
+                location.reload();
 
             },
             error: function (e) {
                 console.log("ERROR: ", e);
-                //display(e);
             },
             done: function (e) {
                 console.log("DONE");
-                //enableSearchButton(true);
             }
         });
     }

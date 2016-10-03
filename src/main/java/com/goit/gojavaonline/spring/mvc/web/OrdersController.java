@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class OrdersController {
+public class OrdersController extends SecureController{
     private OrdersService ordersService;
 
     @RequestMapping( value = "/adminorder", method = RequestMethod.GET)

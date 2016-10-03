@@ -13,38 +13,6 @@ public class EmployeeController extends SecureController {
 
     private EmployeeService employeeService;
 
-    /*@RequestMapping(value = "/employee", method = RequestMethod.GET)
-    public ModelAndView employee(@RequestParam("employeeName") String employeeName) {
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("employee", employeeService.getEmployeeName(employeeName));
-        modelAndView.setViewName("employee");
-        return modelAndView;
-    }*/
-
-//    @RequestMapping(value = "/employees", method = RequestMethod.GET)
-//    public String employees(Map<String, Object> model) {
-//        model.put("employees", employeeService.getEmployees());
-//        return "employees";
-//    }
-
-//    @RequestMapping(value = "/employee/{employeeName}", method = RequestMethod.GET)
-//    public ModelAndView employee(@PathVariable String employeeName) {
-//
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("employee", employeeService.getEmployeeName(employeeName));
-//        modelAndView.setViewName("employee");
-//        return modelAndView;
-//    }
-
- /*   @RequestMapping(value = "/employee", method = RequestMethod.POST)
-    @ResponseBody
-    public Employee employee(@RequestBody Employee employee) {
-        return employeeService.save(employee);
-    }*/
-
-
-
     @RequestMapping( value = "/adminemployee", method = RequestMethod.GET)
     public ModelAndView adminDish() {
         ModelAndView modelAndView = new ModelAndView();
@@ -64,11 +32,6 @@ public class EmployeeController extends SecureController {
         modelAndView.setViewName("waiters");
         return modelAndView;
     }
-
-    /*@RequestMapping(value = "/waiter", method = RequestMethod.GET)
-    public List<EmployeeDto> waiters() {
-        return employeeService.getAllWaiters();
-    }*/
 
     @Autowired
     public void setEmployeeService(EmployeeService employeeService) {

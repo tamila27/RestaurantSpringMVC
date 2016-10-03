@@ -18,6 +18,7 @@ public class EmployeeService {
         return saveAndLoad(employeeToCreate);
     }
 
+    @AuthenticationRequired
     @Transactional
     private EmployeeDto saveAndLoad(Employee newEmployee) {
         employeeDao.save( newEmployee );
@@ -45,6 +46,7 @@ public class EmployeeService {
         return EmployeeDto.convert(employeeDao.findAll());
     }
 
+    @AuthenticationRequired
     @Transactional
     public EmployeeDto updateEmployee(Employee employee) {
 

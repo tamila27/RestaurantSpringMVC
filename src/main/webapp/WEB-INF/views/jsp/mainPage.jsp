@@ -38,7 +38,7 @@
             <li><h1>${menu.name}</h1>
 
 
-                <table class="table">
+                <table class="table table-bordered">
                     <tr>
                         <th>Dish Name</th>
                         <th>Weight</th>

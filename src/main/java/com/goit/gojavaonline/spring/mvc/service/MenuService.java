@@ -6,6 +6,7 @@ import com.goit.gojavaonline.spring.mvc.dto.DishDto;
 import com.goit.gojavaonline.spring.mvc.dto.MenuDto;
 import com.goit.gojavaonline.spring.mvc.model.Dish;
 import com.goit.gojavaonline.spring.mvc.model.Menu;
+import com.goit.gojavaonline.spring.mvc.web.AuthenticationRequired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,11 +39,13 @@ public class MenuService {
         return result;
     }
 
+    @AuthenticationRequired
     @Transactional
     public void addDish(int menuId, int dishId) {
         menuDao.insertDishInMenu(menuId, dishDao.findById(dishId));
     }
 
+    @AuthenticationRequired
     @Transactional
     public void deleteDish(int menuId, int dishId) {
         menuDao.deleteDishFromMenu(menuId, dishDao.findById(dishId));
@@ -53,6 +56,7 @@ public class MenuService {
         return MenuDto.convert(menuDao.findById(menuId));
     }
 
+    @AuthenticationRequired
     @Transactional
     public MenuDto addMenu(String menuName) {
         Menu menu = new Menu();
@@ -62,6 +66,7 @@ public class MenuService {
         return MenuDto.convert(menuDao.findByName(menuName));
     }
 
+    @AuthenticationRequired
     @Transactional
     public void deleteMenu(int menuId) {
         menuDao.deleteMenu(menuId);

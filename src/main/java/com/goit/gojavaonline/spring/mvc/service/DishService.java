@@ -8,6 +8,7 @@ import com.goit.gojavaonline.spring.mvc.dto.DishIngredientDto;
 import com.goit.gojavaonline.spring.mvc.model.Dish;
 import com.goit.gojavaonline.spring.mvc.model.DishCategory;
 import com.goit.gojavaonline.spring.mvc.model.DishIngredient;
+import com.goit.gojavaonline.spring.mvc.web.AuthenticationRequired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,6 +31,7 @@ public class DishService {
         return dishDao.findAll().stream().map(DishDto::convert).collect(Collectors.toList());
     }
 
+    @AuthenticationRequired
     @Transactional
     public DishDto addDish(String dishName, Float weight, Float price, DishCategory category) {
         Dish dish = new Dish();
@@ -51,6 +53,7 @@ public class DishService {
         return result;
     }
 
+    @AuthenticationRequired
     @Transactional
     public void addIngredient(int dishId, int ingredientId, int quantity) {
         DishIngredient dishIngredient = new DishIngredient();
@@ -60,6 +63,7 @@ public class DishService {
         dishIngredientDao.save(dishIngredient);
     }
 
+    @AuthenticationRequired
     @Transactional
     public void deleteIngredient(int dishId, int ingredientId) {
         dishIngredientDao.delete(ingredientId, dishId);
@@ -70,11 +74,13 @@ public class DishService {
         return DishDto.convert(dishDao.findById(dishId));
     }
 
+    @AuthenticationRequired
     @Transactional
     public void deleteDish(int dishId) {
         dishDao.deleteDish(dishDao.findById(dishId));
     }
 
+    @AuthenticationRequired
     @Transactional
     public void updateDish(int dishId, float weight, float price) {
         dishDao.updateDish(dishId, weight, price);
